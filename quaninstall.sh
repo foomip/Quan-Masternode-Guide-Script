@@ -137,6 +137,6 @@ echo "YOUR IP = $IP:$PORT"
 echo "YOUR PRIVKEY = $PRIVKEY"
 echo "##########################" 
 echo ""
-killall -9 quantisnetd
+#killall -9 quantisnetd
 #sleep 20
 #quantisnetd -daemon
