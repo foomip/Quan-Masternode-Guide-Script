@@ -110,7 +110,7 @@ function conf_get_value() {
 }
 
 if [[ $DOSETUPTHREE =~ "y" ]] ; then
-  cd $CONF_DIR
+  cd $HOME
   #sudo apt-get update
   #sudo apt-get -y install python-virtualenv
   #sudo apt-get -y install virtualenv
