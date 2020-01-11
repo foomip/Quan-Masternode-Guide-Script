@@ -1,9 +1,9 @@
 #/bin/bash
 #clear
 #echo "Do you want to install required dependencies?  (Select no if you have done this before) [y/n]"
-DOSETUP=n
+DOSETUP="n"
 
-if [[ $DOSETUP =~ "y" ]] ; then
+if [[ $DOSETUP =~ "y" ]]; then
   sudo apt-get update
   sudo apt-get -y upgrade
   sudo apt-get -y dist-upgrade
@@ -25,9 +25,9 @@ if [[ $DOSETUP =~ "y" ]] ; then
 fi
   
 #echo "Do you want to compile Daemon (please choose no if you did it before)? [y/n]"
-DOSETUPTWO=y
+DOSETUPTWO="y"
 
-if [[ $DOSETUPTWO =~ "y" ]] ; then
+if [[ $DOSETUPTWO =~ "y" ]]; then
 
   quantisnet-cli stop > /dev/null 2>&1
   
