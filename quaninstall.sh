@@ -1,7 +1,7 @@
 #/bin/bash
-clear
-echo "Do you want to install required dependencies?  (Select no if you have done this before) [y/n]"
-read DOSETUP
+#clear
+#echo "Do you want to install required dependencies?  (Select no if you have done this before) [y/n]"
+DOSETUP=n
 
 if [[ $DOSETUP =~ "y" ]] ; then
   sudo apt-get update
@@ -24,8 +24,8 @@ if [[ $DOSETUP =~ "y" ]] ; then
   source ~/.bashrc
 fi
   
-echo "Do you want to compile Daemon (please choose no if you did it before)? [y/n]"
-read DOSETUPTWO
+#echo "Do you want to compile Daemon (please choose no if you did it before)? [y/n]"
+DOSETUPTWO=y
 
 if [[ $DOSETUPTWO =~ "y" ]] ; then
 
@@ -69,9 +69,10 @@ else
 fi
 
 echo "IP Done"
-echo ""
-echo "Enter masternode private key for node $ALIAS , Go To your Windows Wallet Tools > Debug Console , Type masternode genkey"
-read PRIVKEY
+#echo ""
+#echo "Enter masternode private key for node $ALIAS , Go To your Windows Wallet Tools > Debug Console , Type masternode genkey"
+#read PRIVKEY
+PRIVKEY=notused
 
 CONF_DIR=~/.quantisnetcore/
 CONF_FILE=quantisnet.conf
@@ -92,8 +93,8 @@ echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 echo "masternodeaddr=$IP:$PORT" >> $CONF_DIR/$CONF_FILE
 echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
 
-echo "Do you want to install sentinel?  (Required for rewards and governance) [y/n]"
-read DOSETUPTHREE
+#echo "Do you want to install sentinel?  (Required for rewards and governance) [y/n]"
+DOSETUPTHREE=y
 
 function conf_set_value() {
 	# <$1 = conf_file> | <$2 = key> | <$3 = value> | [$4 = force_create]
@@ -108,9 +109,9 @@ function conf_get_value() {
 
 if [[ $DOSETUPTHREE =~ "y" ]] ; then
   cd $CONF_DIR
-  sudo apt-get update
-  sudo apt-get -y install python-virtualenv
-  sudo apt-get -y install virtualenv
+  #sudo apt-get update
+  #sudo apt-get -y install python-virtualenv
+  #sudo apt-get -y install virtualenv
   user="$(whoami)"
   git clone https://github.com/QuantisDev/sentinel && cd sentinel
   sudo virtualenv ./venv
@@ -135,5 +136,5 @@ echo "YOUR PRIVKEY = $PRIVKEY"
 echo "##########################" 
 echo ""
 killall -9 quantisnetd
-sleep 20
-quantisnetd -daemon
+#sleep 20
+#quantisnetd -daemon
