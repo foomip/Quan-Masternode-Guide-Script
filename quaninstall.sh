@@ -41,34 +41,35 @@ if [[ $DOSETUPTWO =~ "y" ]] ; then
   mv quantisnetcore-2.1.3/share/man/man1 /usr/local/share/man/
   rm -r quantisnetcore-2.1.3
   rm quantisnetcore-2.1.3.2-x86_64-linux-gnu.tar.gz
-chmod +x /usr/local/bin/quantisnet*
+  chmod +x /usr/local/bin/quantisnet*
 fi
 
-echo ""
-echo "Configuring IP - Please Wait......."
+#echo ""
+#echo "Configuring IP - Please Wait......."
 
-declare -a NODE_IPS
-for ips in $(netstat -i | awk '!/Kernel|Iface|lo/ {print $1," "}')
-do
-  NODE_IPS+=($(curl --interface $ips --connect-timeout 2 -s4 icanhazip.com))
-done
+#declare -a NODE_IPS
+#for ips in $(netstat -i | awk '!/Kernel|Iface|lo/ {print $1," "}')
+#do
+#  NODE_IPS+=($(curl --interface $ips --connect-timeout 2 -s4 icanhazip.com))
+#done
 
-if [ ${#NODE_IPS[@]} -gt 1 ]
-  then
-    echo -e "More than one IP. Please type 0 to use the first IP, 1 for the second and so on...${NC}"
-    INDEX=0
-    for ip in "${NODE_IPS[@]}"
-    do
-      echo ${INDEX} $ip
-      let INDEX=${INDEX}+1
-    done
-    read -e choose_ip
-    IP=${NODE_IPS[$choose_ip]}
-else
-  IP=${NODE_IPS[0]}
-fi
+#if [ ${#NODE_IPS[@]} -gt 1 ]
+#  then
+#    echo -e "More than one IP. Please type 0 to use the first IP, 1 for the second and so on...${NC}"
+#    INDEX=0
+#    for ip in "${NODE_IPS[@]}"
+#    do
+#      echo ${INDEX} $ip
+#      let INDEX=${INDEX}+1
+#    done
+#    read -e choose_ip
+#    IP=${NODE_IPS[$choose_ip]}
+#else
+#  IP=${NODE_IPS[0]}
+#fi
+IP=172.17.0.2
 
-echo "IP Done"
+#echo "IP Done"
 #echo ""
 #echo "Enter masternode private key for node $ALIAS , Go To your Windows Wallet Tools > Debug Console , Type masternode genkey"
 #read PRIVKEY
