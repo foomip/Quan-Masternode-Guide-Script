@@ -1,4 +1,5 @@
-#/bin/bash
+#!/bin/bash
+
 #clear
 #echo "Do you want to install required dependencies?  (Select no if you have done this before) [y/n]"
 DOSETUP="n"
